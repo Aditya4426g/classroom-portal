@@ -59,11 +59,24 @@ app.get('/api/health', (req, res) => {
 
 // Serve static files in production
 if (process.env.NODE_ENV === 'production') {
-  app.use(express.static(path.join(__dirname, '../client/build')));
+  const buildPath = path.join(__dirname, '../client/build');
   
-  app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, '../client/build', 'index.html'));
-  });
+  // Check if build directory exists
+  if (require('fs').existsSync(buildPath)) {
+    app.use(express.static(buildPath));
+    
+    app.get('*', (req, res) => {
+      res.sendFile(path.join(buildPath, 'index.html'));
+    });
+  } else {
+    console.log('⚠️  Client build not found. Serving API only.');
+    app.get('*', (req, res) => {
+      res.json({ 
+        message: 'Classroom Portal API is running', 
+        status: 'Build in progress...' 
+      });
+    });
+  }
 }
 
 // Error handling middleware
