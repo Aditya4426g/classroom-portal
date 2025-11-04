@@ -5,7 +5,9 @@
   "scripts": {
     "start": "node server.js",
     "dev": "nodemon server.js",
-    "build": "echo 'Building client...' && cd ../client && npm install && npm run build && echo 'Client build complete!'",
+    "build": "npm run build:client",
+    "build:client": "cd ../client && npm ci && npm run build",
+    "postinstall": "npm run build:client",
     "create-admin": "node scripts/createAdmin.js"
   },
   "dependencies": {

@@ -3,14 +3,7 @@ services:
     name: classroom-portal
     env: node
     plan: free
-    buildCommand: |
-      echo "Installing server dependencies..."
-      cd server && npm install
-      echo "Installing client dependencies..."
-      cd ../client && npm install
-      echo "Building client..."
-      npm run build
-      echo "Build complete!"
+    buildCommand: cd server && npm install
     startCommand: cd server && npm start
     envVars:
       - key: NODE_ENV
