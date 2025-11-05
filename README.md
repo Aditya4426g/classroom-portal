@@ -2,6 +2,13 @@
 
 A full-stack classroom management system built with React and Node.js.
 
+## 🚀 Live Demo
+
+**[View Live Application](https://profound-fox-28e1a3.netlify.app/login)**
+
+- **Frontend:** https://profound-fox-28e1a3.netlify.app
+- **Backend API:** https://classroom-portal-9g8k.onrender.com
+
 ## Features
 
 - User authentication (Students, Teachers, Admins)
